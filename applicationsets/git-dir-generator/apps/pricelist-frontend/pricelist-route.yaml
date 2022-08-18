@@ -5,21 +5,21 @@ metadata:
     cert-manager.io/cluster-issuer: le-cluster-issuer
     external-dns.alpha.kubernetes.io/ttl: "60"
   name: pricelist-ingress
-  namespace: argocd
+  namespace: pricelist
 spec:
   ingressClassName: nginx
   rules:
-  - host: appsets.tachi.soramitsu.co.jp
-    http:
-      paths:
-      - backend:
-          service:
-            name: pricelist
-            port:
-              number: 8080
-        path: /
-        pathType: ImplementationSpecific
+    - host: appsets.tachi.soramitsu.co.jp
+      http:
+        paths:
+          - backend:
+              service:
+                name: pricelist
+                port:
+                  number: 8080
+            path: /
+            pathType: ImplementationSpecific
   tls:
-  - hosts:
-    - appsets.tachi.soramitsu.co.jp
-    secretName: appsets-tls
+    - hosts:
+        - appsets.tachi.soramitsu.co.jp
+      secretName: appsets-tls
